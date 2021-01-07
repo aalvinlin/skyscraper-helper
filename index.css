@@ -1,0 +1,36 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 95vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cluesTopRow, .cluesBottomRow, .puzzleRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clue, .skyscraper {
+    width: 80px;
+    height: 80px;
+}
+
+.skyscraper {
+    border: 2px solid #CCCCCC;
+}
+
+.skyscraper:hover {
+    cursor: pointer;
+    background-color: #EEEEEE;
+}
+
+.clue {
+    border: 2px solid transparent;
+}
