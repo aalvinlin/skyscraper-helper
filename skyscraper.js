@@ -1,12 +1,16 @@
+// input: a string of length 1 (a single numeral)
 const highlightAvailableCellsForDigit = n => {
     
-    // first highlight every cell in the grid
+    // first highlight every cell (that is not already filled) in the grid
     for (let row = 0; row < 9; row += 1)
         {
             for (let col = 0; col < 9; col += 1)
                 {                
                     const cell = document.getElementById(`cell_${row}_${col}`);
-                    cell.classList.add("highlight");
+
+                    // only add a highlight if the cell doesn't already contain a number
+                    if (cell.textContent === "")
+                        { cell.classList.add("highlight"); }
                 }
         }
 
@@ -17,7 +21,7 @@ const highlightAvailableCellsForDigit = n => {
                 {   
                     const cell = document.getElementById(`cell_${row}_${col}`);
 
-                    if (cell.textContent === n.toString())
+                    if (cell.textContent === n)
                         {
                             // remove highlight from all cells in row
                             for (let currentCol = 0; currentCol < 9; currentCol += 1)
