@@ -29,7 +29,7 @@ const highlightAvailableCellsForDigit = n => {
                             // remove highlight from all cells in column
                             for (let currentRow = 0; currentRow < 9; currentRow += 1)
                                 {
-                                    const currentCellInCol = document.getElementById(`cell_${row}_${currentRow}`);
+                                    const currentCellInCol = document.getElementById(`cell_${currentRow}_${col}`);
                                     currentCellInCol.classList.remove("highlight");
                                 }
                         }
