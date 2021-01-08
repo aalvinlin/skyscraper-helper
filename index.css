@@ -11,15 +11,15 @@ body {
 }
 
 
-.cluesTopRow, .cluesBottomRow, .puzzleRow, .clue, .skyscraper {
+.cluesTopRow, .cluesBottomRow, .puzzleRow, .clue, .skyscraper, .allDigits {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .clue, .skyscraper {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 
     font-size: 48px;
 }
