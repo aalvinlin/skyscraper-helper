@@ -47,23 +47,77 @@ const highlightAvailableCellsForDigit = n => {
     
     // remove highlights from cells where a tall building is too close to the edge
 
-    // start from the top edge
-    for (let currentClueNumber = 0; currentClueNumber < 9; currentClueNumber += 1)
+    // check clues along the top and bottom edges
+    for (let col = 0; col < 9; col += 1)
         {
-            let clueValue = document.getElementById(`clueTop_${currentClueNumber}`).textContent;
+            // start from the top edge
+            let clueTopValue = document.getElementById(`clueTop_${col}`).textContent;
 
-            if (!isNaN(clueValue))
-                { clueValue = parseInt(clueValue); }
+            if (!isNaN(clueTopValue))
+                { clueTopValue = parseInt(clueTopValue); }
             
-            const minSquaresFromEdge = clueValue - totalBuildingsOfHeightNOrMore;
+            const minSquaresFromTopEdge = clueTopValue - totalBuildingsOfHeightNOrMore;
 
-            if (minSquaresFromEdge > 0)
+            if (minSquaresFromTopEdge > 0)
                 {
-                    console.log(currentClueNumber, minSquaresFromEdge)
-
-                    for (let row = 0; row < minSquaresFromEdge; row += 1)
+                    for (let row = 0; row < minSquaresFromTopEdge; row += 1)
                         {
-                            const currentCell = document.getElementById(`cell_${row}_${currentClueNumber}`);
+                            const currentCell = document.getElementById(`cell_${row}_${col}`);
+                            currentCell.classList.remove("highlight");
+                        }
+                }
+
+            // repeat for the bottom edge
+            let clueBottomValue = document.getElementById(`clueBottom_${col}`).textContent;
+
+            if (!isNaN(clueBottomValue))
+                { clueBottomValue = parseInt(clueBottomValue); }
+            
+            const minSquaresFromBottomEdge = clueBottomValue - totalBuildingsOfHeightNOrMore;
+
+            if (minSquaresFromBottomEdge > 0)
+                {
+                    for (let row = 8; row > 8 - minSquaresFromBottomEdge; row -= 1)
+                        {
+                            const currentCell = document.getElementById(`cell_${row}_${col}`);
+                            currentCell.classList.remove("highlight");
+                        }
+                }
+        }
+
+    // check clues along the left and right edges
+    for (let row = 0; row < 9; row += 1)
+        {
+            // start from the left edge
+            let clueLeftValue = document.getElementById(`clueLeft_${row}`).textContent;
+
+            if (!isNaN(clueLeftValue))
+                { clueLeftValue = parseInt(clueLeftValue); }
+            
+            const minSquaresFromLeftEdge = clueLeftValue - totalBuildingsOfHeightNOrMore;
+
+            if (minSquaresFromLeftEdge > 0)
+                {
+                    for (let col = 0; col < minSquaresFromLeftEdge; col += 1)
+                        {
+                            const currentCell = document.getElementById(`cell_${row}_${col}`);
+                            currentCell.classList.remove("highlight");
+                        }
+                }
+
+            // repeat for the right edge
+            let clueRightValue = document.getElementById(`clueRight_${row}`).textContent;
+
+            if (!isNaN(clueRightValue))
+                { clueRightValue = parseInt(clueRightValue); }
+            
+            const minSquaresFromRightEdge = clueRightValue - totalBuildingsOfHeightNOrMore;
+
+            if (minSquaresFromRightEdge > 0)
+                {
+                    for (let col = 8; col > 8 - minSquaresFromRightEdge; col -= 1)
+                        {
+                            const currentCell = document.getElementById(`cell_${row}_${col}`);
                             currentCell.classList.remove("highlight");
                         }
                 }
