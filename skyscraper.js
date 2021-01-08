@@ -124,3 +124,8 @@ const highlightAvailableCellsForDigit = n => {
         }
 
 }
+
+const setCellValue = node => {
+    const response = prompt("New cell value?");
+    node.textContent = response;
+}
