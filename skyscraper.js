@@ -1,3 +1,5 @@
+const tallestBuildingHeight = 9;
+
 // input: a string of length 1 (a single numeral)
 const highlightAvailableCellsForDigit = n => {
     
@@ -39,4 +41,32 @@ const highlightAvailableCellsForDigit = n => {
                         }
                 }
         }
+
+    n = parseInt(n);
+    const totalBuildingsOfHeightNOrMore = tallestBuildingHeight - parseInt(n) + 1;
+    
+    // remove highlights from cells where a tall building is too close to the edge
+
+    // start from the top edge
+    for (let currentClueNumber = 0; currentClueNumber < 9; currentClueNumber += 1)
+        {
+            let clueValue = document.getElementById(`clueTop_${currentClueNumber}`).textContent;
+
+            if (!isNaN(clueValue))
+                { clueValue = parseInt(clueValue); }
+            
+            const minSquaresFromEdge = clueValue - totalBuildingsOfHeightNOrMore;
+
+            if (minSquaresFromEdge > 0)
+                {
+                    console.log(currentClueNumber, minSquaresFromEdge)
+
+                    for (let row = 0; row < minSquaresFromEdge; row += 1)
+                        {
+                            const currentCell = document.getElementById(`cell_${row}_${currentClueNumber}`);
+                            currentCell.classList.remove("highlight");
+                        }
+                }
+        }
+
 }
